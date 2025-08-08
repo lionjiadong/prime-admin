@@ -394,7 +394,7 @@ export default tseslint.config(
     },
     rules: {
       ...tseslint.configs['eslint-recommended'].overrides?.[0].rules,
-      ...tseslint.configs.strict.rules,
+      ...tseslint.configs['eslint-recommended'].strict.rules,
       '@typescript-eslint/ban-ts-comment': [
         'error',
         {
