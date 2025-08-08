@@ -1,3 +1,15 @@
 {
-  "recommendations": ["Vue.volar"]
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "vue.volar",
+    "mikestead.dotenv",
+    "lokalise.i18n-ally",
+    "esbenp.prettier-vscode"
+  ],
+
+  "unwantedRecommendations": [
+    // 和 volar 冲突
+    "octref.vetur"
+  ]
 }
