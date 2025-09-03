@@ -1,16 +1,75 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import {
+  SidebarProvider,
+  SidebarTrigger,
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/components/ui/sidebar';
+import { Calendar, Home, Inbox, Search, Settings } from 'lucide-vue-next';
+
+const items = [
+  {
+    title: 'Home',
+    url: '#',
+    icon: Home,
+  },
+  {
+    title: 'Inbox',
+    url: '#',
+    icon: Inbox,
+  },
+  {
+    title: 'Calendar',
+    url: '#',
+    icon: Calendar,
+  },
+  {
+    title: 'Search',
+    url: '#',
+    icon: Search,
+  },
+  {
+    title: 'Settings',
+    url: '#',
+    icon: Settings,
+  },
+];
+</script>
 
 <template>
-  <div>
-    <div
-      class="mx-auto flex max-w-sm items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
-    >
-      <div>
-        <div class="text-xl font-medium text-black dark:text-white">
-          ChitChat
-        </div>
-        <p class="text-gray-500 dark:text-gray-400">You have a new message!</p>
-      </div>
-    </div>
-  </div>
+  <SidebarProvider>
+    <Sidebar>
+      <SidebarHeader />
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem v-for="item in items" :key="item.title">
+                <SidebarMenuButton asChild>
+                  <a :href="item.url">
+                    <component :is="item.icon" />
+                    <span>{{ item.title }}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter />
+    </Sidebar>
+    <main>
+      <SidebarTrigger />
+      <RouterView />
+    </main>
+  </SidebarProvider>
 </template>
